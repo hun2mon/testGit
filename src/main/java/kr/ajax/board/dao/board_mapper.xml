@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC	"-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd"
+>
+
+<mapper namespace="kr.ajax.board.dao.BoardDAO">
+	
+	<select id="list" resultType="kr.ajax.board.dto.BoardDTO">
+		SELECT 
+			(select COUNT(new_fileName) from photo p where p.idx = b.idx) as img_cnt,
+			b.*
+		FROM bbs b ORDER BY idx desc;
+	</select>
+	
+	<select id="lists" resultType="map">
+		SELECT 
+			(select COUNT(new_fileName) from photo p where p.idx = b.idx) as img_cnt,
+			b.*
+		FROM bbs b ORDER BY idx desc;
+	</select>
+	
+	<select id="fileName" resultType="String">
+		SELECT new_fileName FROM photo WHERE idx = #{param1}
+	</select>
+	
+	<delete id="del">
+		DELETE FROM bbs WHERE idx = #{param1}
+	</delete>
+	
+
+</mapper>
