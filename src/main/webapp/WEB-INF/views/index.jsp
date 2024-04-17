@@ -18,5 +18,8 @@
 <script>
 	var arr = [];
 	var obj = {};
+	function test() {
+		alert('test입니다.');
+	}
 </script>
 </html>
